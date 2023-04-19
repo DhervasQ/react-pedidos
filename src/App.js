@@ -1,10 +1,10 @@
-import Pedidos from './Components/Pedidos/Pedidos';
-import './App.css';
+import Pedidos from "./Components/Pedidos/Pedidos";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-<Pedidos></Pedidos>
+      <Pedidos></Pedidos>
     </div>
   );
 }

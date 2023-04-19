@@ -14,21 +14,27 @@ const DIV_MODAL_STYLE = {
 
 const ModalComentario = (props) => {
   const { register, handleSubmit } = useForm();
-  const {users}= useContext(ContextPedidos);
-  const usuarioActivo=users.filter((user)=>user.activo===true)[0];
+  const { users } = useContext(ContextPedidos);
+  const usuarioActivo = users.filter((user) => user.activo === true)[0];
   const onSubmit = (nuevoComentario) => {
     const copiaPedidos = [...props.pedidos];
 
     copiaPedidos.map((elemento) => {
       if (elemento.id === props.id) {
-         elemento.comentarios.push({user:usuarioActivo.id,texto:nuevoComentario.name});
+        elemento.comentarios.push({
+          user: usuarioActivo.id,
+          texto: nuevoComentario.name,
+        });
       }
       return elemento;
     });
     props.setPedidos(copiaPedidos);
   };
 
-  const comentarios=props.pedidos[props.id].comentarios.filter((comentario)=>comentario.user===usuarioActivo.id);
+  const comentarios = props.pedidos[props.id].comentarios.filter(
+    (comentario) => comentario.user === usuarioActivo.id
+  );
+
   if (!props.open) return null;
   return (
     <div style={DIV_MODAL_STYLE}>
@@ -36,7 +42,7 @@ const ModalComentario = (props) => {
       {comentarios &&
         comentarios.map((comentario) => (
           <div key={comentario.texto}>
-          <p>{comentario.texto}</p>
+            <p>{comentario.texto}</p>
           </div>
         ))}
 
