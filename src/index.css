@@ -13,6 +13,9 @@ body {
 
 button{
   background-color: #e74c3c;
+  color:#fff;
+  text-decoration: none;
+   outline:none;
 }
 
 code {

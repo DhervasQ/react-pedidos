@@ -7,7 +7,7 @@ const DIV_MODAL_STYLE = {
   top: "20%",
   left: "50%",
   transform: "translate(-50%,-50%)",
-  backgroundColor: "#fff",
+ 
   padding: "50px",
   zIndex: 10000,
 };
@@ -21,7 +21,7 @@ const ModalComentario = (props) => {
 
     copiaPedidos.map((elemento) => {
       if (elemento.id === props.id) {
-        elemento.comentarios.push({
+          elemento.comentarios.push({
           user: usuarioActivo.id,
           texto: nuevoComentario.name,
         });
@@ -31,13 +31,13 @@ const ModalComentario = (props) => {
     props.setPedidos(copiaPedidos);
   };
 
-  const comentarios = props.pedidos[props.id].comentarios.filter(
+  const comentarios = props.pedidos[props.id] && props.pedidos[props.id].comentarios.filter(
     (comentario) => comentario.user === usuarioActivo.id
   );
 
   if (!props.open) return null;
   return (
-    <div style={DIV_MODAL_STYLE}>
+    <div style={DIV_MODAL_STYLE} className="comentario">
       <button onClick={props.close}>X</button>
       {comentarios &&
         comentarios.map((comentario) => (

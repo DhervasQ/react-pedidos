@@ -12,17 +12,21 @@ const DIV_MODAL_STYLE = {
   zIndex: 1000,
 };
 
-const ModalDatos = (props) => {
+const ModalDatosNew = (props) => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     const copiaPedidos = [...props.pedidos];
     copiaPedidos.map((elemento) => {
-      if (elemento.id === data.id) {
-        elemento.name = data.name;
-        elemento.cantidad = data.cantidad;
-      }
-      return elemento;
+     
+        return elemento;
+      
     });
+    const nuevo = {};
+    nuevo.id = props.id;
+    nuevo.name = data.name;
+    nuevo.cantidad = data.cantidad;
+    nuevo.comentarios = [];
+     copiaPedidos.push(nuevo);
     props.setPedidos(copiaPedidos);
   };
   if (!props.open) return null;
@@ -33,11 +37,11 @@ const ModalDatos = (props) => {
         <input type="text" {...register("name")} />
         <input type="number" {...register("cantidad")} />
         <button>Aceptar</button>
-        
+
       </form>
-      <p>{props.id}</p>
+      
     </div>
   );
 };
 
-export default ModalDatos;
+export default ModalDatosNew;

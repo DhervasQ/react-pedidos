@@ -5,7 +5,7 @@ const Comentarios = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <button onClick={() => setIsOpen(true)}>Comentario</button>
+      <button onClick={() => setIsOpen(true)}>Comentar</button>
       <ModalComentario open={isOpen} close={() => setIsOpen(false)} setPedidos={props.setPedidos} pedidos={props.pedidos}  id={props.id}></ModalComentario>
     </div>
   );
